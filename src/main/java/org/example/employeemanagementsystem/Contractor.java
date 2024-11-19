@@ -12,6 +12,6 @@ public class Contractor extends Employee {
 
     @Override
     public double calculateSalary() {
-        return hourlyRate * maxHours;
+        return hourlyRate * maxHours*12;
     }
 }

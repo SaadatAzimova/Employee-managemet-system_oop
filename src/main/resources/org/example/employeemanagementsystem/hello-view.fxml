@@ -1,16 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.employeemanagementsystem.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.employeemanagementsystem.HelloController">
+   <children>
+      <TabPane fx:id="tabpane" layoutX="1.0" prefHeight="440.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="mainTab" text="main">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="637.0">
+                     <children>
+                        <Label layoutX="31.0" layoutY="58.0" text="Name" />
+                        <Label layoutX="31.0" layoutY="101.0" text="Position" />
+                        <Label layoutX="31.0" layoutY="151.0" text="Type" />
+                        <Label layoutX="33.0" layoutY="202.0" text="Annual salary" />
+                        <Button fx:id="add" layoutX="34.0" layoutY="298.0" mnemonicParsing="false" onAction="#addEmployee" text="Add" />
+                        <Button fx:id="remove" layoutX="515.0" layoutY="298.0" mnemonicParsing="false" onAction="#removeEmployee" text="Remove" />
+                        <Label fx:id="removed" layoutX="367.0" layoutY="304.0" prefHeight="18.0" prefWidth="133.0" text="no removed items" />
+                        <TextField fx:id="name" layoutX="94.0" layoutY="55.0" />
+                        <TextField fx:id="position" layoutX="91.0" layoutY="98.0" />
+                        <Label fx:id="salary" layoutX="138.0" layoutY="202.0" prefHeight="18.0" prefWidth="116.0" />
+                        <TableView fx:id="table" layoutX="283.0" layoutY="30.0" prefHeight="209.0" prefWidth="383.0">
+                          <columns>
+                            <TableColumn fx:id="tableName" prefWidth="123.0" text="Name" />
+                            <TableColumn fx:id="tableType" prefWidth="141.0" text="Type" />
+                              <TableColumn fx:id="tableSalary" prefWidth="118.0" text="Salary" />
+                          </columns>
+                        </TableView>
+                        <ChoiceBox fx:id="unitChoice" layoutX="87.0" layoutY="156.0" onDragDetected="#initialize" prefWidth="150.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="fTab" text="full-time">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutY="-1.0" prefHeight="384.0" prefWidth="677.0">
+                           <children>
+                              <Label layoutX="152.0" layoutY="32.0" text="Fill the text field below:">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="62.0" layoutY="106.0" text="Monthly salary:" />
+                              <TextField fx:id="fMonthlySalary" layoutX="94.0" layoutY="167.0" />
+                              <Button fx:id="fCalculate" layoutX="402.0" layoutY="284.0" mnemonicParsing="false" onAction="#calculateFullTimeSalary" text="Calculate salary" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+            <Tab fx:id="pTab" text="part-time">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="195.0" layoutY="32.0" text="Fill the text fields below:">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="46.0" layoutY="89.0" prefHeight="41.0" prefWidth="107.0" text="Hourly wage:" />
+                        <Label layoutX="51.0" layoutY="206.0" prefHeight="27.0" prefWidth="96.0" text="Hours worked:" />
+                        <TextField fx:id="pHourlyWage" layoutX="136.0" layoutY="149.0" />
+                        <TextField fx:id="pHourlyWorked" layoutX="136.0" layoutY="264.0" />
+                        <Button fx:id="pCalculate" layoutX="429.0" layoutY="319.0" mnemonicParsing="false" onAction="#calculatePartTimeSalary" text="calculate salary" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="cTab" text="contractor">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="30.0" layoutY="98.0" text=" maximum number of hours worked in a month:" />
+                        <Label layoutX="30.0" layoutY="214.0" prefHeight="18.0" prefWidth="122.0" text="fixed hourly rate:" />
+                        <TextField fx:id="cMaxHour" layoutX="196.0" layoutY="148.0" />
+                        <TextField fx:id="cHourlyRate" layoutX="189.0" layoutY="283.0" />
+                        <Label layoutX="230.0" layoutY="23.0" prefHeight="45.0" prefWidth="201.0" text="Fill text fields below.">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="cCalculate" layoutX="461.0" layoutY="303.0" mnemonicParsing="false" onAction="#calculateContractorSalary" text="calculate salary" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="-188.0" layoutY="178.0" text="Label" />
+   </children>
+</AnchorPane>
