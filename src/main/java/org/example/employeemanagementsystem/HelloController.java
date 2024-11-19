@@ -73,6 +73,7 @@ public class HelloController {
         String employeePosition = position.getText();
         String employeeType = unitChoice.getValue();
         Employee employee = null;
+        salary.setText(""); // Clear salary label
 
         try {
             switch (employeeType) {
